@@ -20,7 +20,10 @@
     <form action="{% url 'user:login' %}" method="post" novalidate>
     {% csrf_token %}
         {{ form.phone }}
+        <p class="">{{ form.errors.phone.0 }}</p>
+
         {{ form.password }}
+        <p>{{ form.errors.password.0 }}</p>
 {#        <input type="text" name="phone" id="phone" placeholder="请输入用户名/手机号" class="login-name">#}
 {#	    <input type="password" name="password" id="password" placeholder="请输入密码" class="login-password">#}
 	    <input type="submit" class="login-btn" value="我要登录">

@@ -25,6 +25,32 @@ class LoginModelForm(forms.ModelForm):
         }
 
 
+    def clean(self):
+        # pass
+        cleaned_data=super().clean()
+        #验证手机和密码是否正确:
+        phone=cleaned_data.get('phone')
+        password=cleaned_data.get('password')
+        #通过手机号查询数据,如果有再验证密码,没有则直接报错:
+        user=User.objects.filter(phone=phone).first()
+        if user is None:
+            #手机号未注册:
+            raise forms.ValidationError({'phone':'该手机号码未注册.'})
+        else:
+            #验证密码是否正确:
+            password_in_db=user.password #已经加密的password
+            password=set_password(password)
+            if password_in_db != password:
+                #密码错误:
+                raise forms.ValidationError({'password':'密码错误.'})
+            else:
+                #保存用户的信息对象到 cleaned_data,以便之后视图调用:
+                cleaned_data['user']=user
+                return cleaned_data
+
+
+
+
 class RegisterModelForm(forms.ModelForm):
 
     #确认密码

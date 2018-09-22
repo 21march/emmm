@@ -45,27 +45,34 @@ class LoginView(View):
         form=LoginModelForm(data)
         # a = form.is_valid()
         if form.is_valid():
+            user=form.cleaned_data.get('user')
+            request.session['ID']=user.pk
+            request.session['phone']=user.phone
+            request.session.set_expiry(0)
+
+            return redirect(reverse('user:center'))
+        return render(request,'spuser/login.html',{'form':form})
             #数据合法,与数据库中做对比:
-            cleaned_data=form.cleaned_data
-            phone=cleaned_data.get('phone')
-            password=cleaned_data.get('password')
+            # cleaned_data=form.cleaned_data
+            # phone=cleaned_data.get('phone')
+            # password=cleaned_data.get('password')
             #比较传入与数据库中的数据是否相同:
             #filter出来是一个查询集,加上first之后才会变成一个对象,才可以去出其中的字段
-            is_login=User.objects.filter(phone=phone,password=password).first()
-            if is_login:
-                #保存登录标识到session:
-                request.session['ID']=is_login.pk
-                request.session['phone']=is_login.phone
-                #设置有效期,关闭浏览器就失效:
-                request.session.set_expiry(0)
+            # is_login=User.objects.filter(phone=phone,password=password).first()
 
+            # if is_login:
+                #保存登录标识到session:
+                # request.session['ID']=is_login.pk
+                # request.session['phone']=is_login.phone
+                #设置有效期,关闭浏览器就失效:
+                # request.session.set_expiry(0)
                 #跳转至用户中心:
-                return redirect(reverse('user:center'))
-            else:
-                #比较失败,依然在login:
-                return render(request,'spuser/login.html',{'form':form})
-        else:
-            return render(request,'spuser/login.html',{'form':form})
+        #         return redirect(reverse('user:center'))
+        #     else:
+        #         #比较失败,依然在login:
+        #         return render(request,'spuser/login.html',{'form':form})
+        # else:
+        #     return render(request,'spuser/login.html',{'form':form})
 
 
 class CenterView(BaseVerifyVeiw):
