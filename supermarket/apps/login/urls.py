@@ -25,5 +25,5 @@ urlpatterns = [
     url(r'^reg/$',RegisterView.as_view(),name='register'),
     url(r'^center/$',CenterView.as_view(),name='center'),
     url(r'^infor/$',InforView.as_view(),name='infor'),
-    # url(r'^address/$',AddressView.as_view(),name='address'),
+    url(r'^address/$',AddressView.as_view(),name='address'),
 ]
