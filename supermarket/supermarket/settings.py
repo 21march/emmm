@@ -64,6 +64,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -120,6 +121,14 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+
+#设置图片上传的配置:
+MEDIA_URL = "/static/media/"
+#物理存储目录:
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
+
+
+#缓存配置:
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",

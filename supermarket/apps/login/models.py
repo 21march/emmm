@@ -39,10 +39,10 @@ class User(models.Model):
                                default='',
                                verbose_name='详细地址',
                                )
-    # head = models.ImageField(verbose_name='用户头像',
-    #                          upload_to='head/%Y/%m',
-    #                          default='default/infortx.png',
-    #                          )
+    head = models.ImageField(verbose_name='用户头像',
+                             upload_to='head/%Y/%m',
+                             default='user/201809/24/IMG_2938.JPG',
+                             )
     birthday = models.DateField(verbose_name='出生日期',
                                 null=True,
                                 blank=True,
@@ -57,19 +57,16 @@ class User(models.Model):
                                        auto_now=True,
                                        )
 
-
     class Meta:
         db_table = 'user'
-
 
     def __str__(self):
         return self.phone
 
-
 # class Reg_table(models.Model):
 #     phone=models.CharField(max_length=13,
 #                            verbose_name='手机号码')
-#     password=models.CharField(max_length=13,
+#     password=models.CharField(max_lengt0h=13,
 #                               verbose_name='密码')
 
 
@@ -84,3 +81,8 @@ class User(models.Model):
 #
 #     def __str__(self):
 #         return self.phone
+
+
+class TestImageModel(models.Model):
+    head=models.ImageField(upload_to='user/%Y%m/%d',
+                           verbose_name='头像')

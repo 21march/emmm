@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from login.views import RegisterView, LoginView, index, CenterView, InforView, AddressView
+from login.views import RegisterView, LoginView, index, CenterView, InforView, AddressView, SendCodeView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -26,4 +26,5 @@ urlpatterns = [
     url(r'^center/$',CenterView.as_view(),name='center'),
     url(r'^infor/$',InforView.as_view(),name='infor'),
     url(r'^address/$',AddressView.as_view(),name='address'),
+    url(r'^SendCodeView/$',SendCodeView.as_view(),name='SendCodeView'),
 ]

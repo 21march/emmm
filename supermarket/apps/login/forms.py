@@ -63,6 +63,15 @@ class RegisterModelForm(forms.ModelForm):
                                widget=forms.PasswordInput(attrs={'class':'login-password',
                                                                  'placeholder':'请输入确认密码'}),
                                )
+
+    #添加验证码字段:
+    verify_code=forms.CharField(required=True,
+                                error_messages={
+                                    'required':'请填写验证码.'
+                                },
+                                widget=forms.TextInput(attrs={'class':'reg-yzm','placeholder':'输入验证码'})
+    )
+
     class Meta:
         model=User
         fields=['phone','password']
@@ -118,7 +127,7 @@ class RegisterModelForm(forms.ModelForm):
 class InfoModelForm(forms.ModelForm):
     class Meta:
         model=User
-        fields=['phone','name','sex','school','hometown']
+        fields=['phone','name','sex','school','hometown','head']
 
 
 
