@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'login',
+    'goods',
+    'ckeditor',  #富文本编辑器
+    'ckeditor_uploader',  #富文本编辑器上传部件
 ]
 
 MIDDLEWARE = [
@@ -103,8 +106,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
+# LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -120,6 +123,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+#上线使用:
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 
 #设置图片上传的配置:
@@ -141,3 +147,14 @@ CACHES = {
 
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "default"
+
+
+#ckeditor.上传目录:
+CKEDITOR_UPLOAD_PATH = "uploads/"  #相对于CKeditor的
+
+#富文本框样式,默认样式:
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+    },
+}

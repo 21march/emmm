@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect
 # 主页
 from django.urls import reverse
 from django.views import View
+from django.views.decorators.csrf import csrf_exempt
 
 from db.base_view import BaseVerifyVeiw
 from login.forms import LoginModelForm, RegisterModelForm, InfoModelForm
@@ -161,8 +162,22 @@ class InforView(BaseVerifyVeiw):
         #     context={
         #         'form':form
         #     }
-        # return redirect(reverse('user:center'))
-        return HttpResponse('ok')
+        return redirect(reverse('user:center'))
+        # return HttpResponse('ok')
+
+
+#单独使用一个视图函数处理图片上传:
+@csrf_exempt #移除令牌限制
+def upload_head(request):
+    if request.method=='POST':
+        id=request.session.get('ID')
+        user=User.objects.get(pk=id)
+        user.head=request.FILES['file']#通过键获取对应的文件
+        user.save()
+        return JsonResponse({'error':0})
+    else:
+        return JsonResponse({'error':1})
+
 
 
 class LogoutView(View):
