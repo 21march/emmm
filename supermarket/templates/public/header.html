@@ -17,6 +17,28 @@
 		<script src="{% static 'js/time.js' %}"></script>
 		<script src="{% static 'js/popup.mini.js' %}"></script>
         <script src="{% static 'js/area.js' %}"></script>
+        <script>
+        	function changeImage(){
+              document.getElementById("imgflag").src="images/redherat.png";
+           }
+        </script>
+
+		<style>
+			.am-slider-default .am-control-nav{ text-align: center;}
+			.am-slider-default .am-control-nav li a.am-active{ background: #cb2527;}
+			.am-slider-default .am-control-nav li a{ border: 0; width: 10px; height: 10px;}
+		</style>
+
+        <style>
+			.shop-list-mid .tit a{color: #909090;
+    font-size: 1.4rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;}
+		</style>
 	</head>
 	<body>
 		{% block content %}

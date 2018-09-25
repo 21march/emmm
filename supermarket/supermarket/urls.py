@@ -16,9 +16,13 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+from goods.views import Index
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^user/',include('login.urls',namespace='user')),
     # 上传部件自动调用的上传地址
     url(r'^ckeditor/', include("ckeditor_uploader.urls")),
+    url(r'^goods/',include('goods.urls',namespace='goods')),
+    url(r'^$',Index.as_view(),name='index'),
 ]
