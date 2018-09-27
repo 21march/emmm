@@ -26,8 +26,9 @@
 <!--图片轮换-->
 <div class="am-slider am-slider-default" data-am-flexslider id="demo-slider-0">
   <ul class="am-slides">
-    <li><img src="{% static 'images/banner.png' %}" /></li>
-    <li><img src="{% static 'images/banner.png' %}" /></li>
+      {% for banner in banners %}
+        <li><img src="{{ MEDIA_URL }}{{ banner.img_url }}" /></li>
+      {% endfor %}
   </ul>
 </div>
 <!--导航-->
@@ -76,7 +77,7 @@
       </li>
       <li>
         <div class="am-gallery-item">
-            <a href="{% url 'goods:CategroyView' %}" class="">
+            <a href="{% url 'goods:CategroyView' 0 0 %}" class="">
               <img src="{% static 'images/icon5.png' %}" />
               <p>超市</p>
             </a>
@@ -101,85 +102,115 @@
   	</div>
   </div>
   <!--不规则展示-->
-  <div class="h-line"></div>
-  <!-- 特色专区-->
-  <div class="sq-title">
- 	<img src="{% static 'images/ts.png' %}" width="26"/>
- 	特色专区
-  </div>
-  <ul data-am-widget="gallery" class="am-gallery pro-list am-avg-sm-2 am-avg-md-2 am-avg-lg-4 am-gallery-default"  >
-      <li>
-        <div class="am-gallery-item">
-            <a href="detail.html" class="">
-              <img src=" {% static 'images/test.png' %}" />
-                <h3 class="am-gallery-title">猪骨头棒新鲜生鲜肉制品猪大骨头筒骨熬汤佳品500g</h3>
-                <div class="am-gallery-desc">￥52</div>
-            </a>
-        </div>
-      </li>
-      <li>
-        <div class="am-gallery-item">
-            <a href="detail.html" class="">
-              <img src=" {% static 'images/test1.png' %}" />
-                <h3 class="am-gallery-title">冻品批发大江鸡腿 冷鲜鸡腿放心食材1kg 冷冻食材</h3>
-                <div class="am-gallery-desc">￥39</div>
-            </a>
-        </div>
-      </li>
+{#  <div class="h-line"></div>#}
+{#  <!-- 特色专区-->#}
+{#  <div class="sq-title">#}
+{# 	<img src="{% static 'images/ts.png' %}" width="26"/>#}
+{# 	特色专区#}
+{#  </div>#}
+{#  <ul data-am-widget="gallery" class="am-gallery pro-list am-avg-sm-2 am-avg-md-2 am-avg-lg-4 am-gallery-default"  >#}
+{#  {% for good in goods %}#}
+{#    <li>#}
+{#        <div class="am-gallery-item">#}
+{#            <a href="{% url 'goods:DetailsVeiw' good.goods_sku.pk%}" class="">#}
+{#              <img src=" {{ MEDIA_URL }}{{ good.goods_sku.logo }}" />#}
+{#                <h3 class="am-gallery-title">{{ good.goods_sku.goods_spu.spu_name }}{{ good.goods_sku.sku_name }}</h3>#}
+{#                <div class="am-gallery-desc">￥{{ good.goods_sku.price }}</div>#}
+{#            </a>#}
+{#        </div>#}
+{#      </li>#}
+{#  {% endfor %}#}
+    {% for activities in activity %}
+        <div class="sq-title">
+        <img src="{% static 'images/ts.png' %}" width="26"/>
+        {{ activities.title  }}
+    </div>
+      {% for good in activities.activityzonegoods_set.all %}
         <li>
-        <div class="am-gallery-item">
-            <a href="detail.html" class="">
-              <img src=" {% static 'images/test2.png' %}" />
-                <h3 class="am-gallery-title">法国加力果12个装 进口新鲜水果 嘎啦苹果 包邮</h3>
-                <div class="am-gallery-desc">￥45.8</div>
-            </a>
-        </div>
-      </li>
-      <li>
-        <div class="am-gallery-item">
-            <a href="detail.html" class="">
-              <img src=" {% static 'images/test21.png' %}" />
-                <h3 class="am-gallery-title">法国加力果12个装 进口新鲜水果 嘎啦苹果 包邮</h3>
-                <div class="am-gallery-desc">￥45.8</div>
-            </a>
-        </div>
-      </li>
-       <li>
-        <div class="am-gallery-item">
-            <a href="detail.html" class="">
-              <img src="{% static 'images/test.png' %}" />
-                <h3 class="am-gallery-title">猪骨头棒新鲜生鲜肉制品猪大骨头筒骨熬汤佳品500g</h3>
-                <div class="am-gallery-desc">￥52</div>
-            </a>
-        </div>
-      </li>
-      <li>
-        <div class="am-gallery-item">
-            <a href="detail.html" class="">
-              <img src=" {% static 'images/test1.png' %}" />
-                <h3 class="am-gallery-title">冻品批发大江鸡腿 冷鲜鸡腿放心食材1kg 冷冻食材</h3>
-                <div class="am-gallery-desc">￥39</div>
-            </a>
-        </div>
-      </li>
-        <li>
-        <div class="am-gallery-item">
-            <a href="detail.html" class="">
-              <img src=" {% static 'images/test2.png' %}" />
-                <h3 class="am-gallery-title">法国加力果12个装 进口新鲜水果 嘎啦苹果 包邮</h3>
-                <div class="am-gallery-desc">￥45.8</div>
-            </a>
-        </div>
-      </li>
-      <li>
-        <div class="am-gallery-item">
-            <a href="detail.html" class="">
-              <img src=" {% static 'images/test21.png' %}" />
-                <h3 class="am-gallery-title">法国加力果12个装 进口新鲜水果 嘎啦苹果 包邮</h3>
-                <div class="am-gallery-desc">￥45.8</div>
-            </a>
-        </div>
-      </li>
+            <div class="am-gallery-item">
+                <a href="{% url 'goods:DetailsVeiw' good.goods_sku.pk%}" class="">
+                  <img src=" {{ MEDIA_URL }}{{ good.goods_sku.logo }}" />
+                    <h3 class="am-gallery-title">{{ good.goods_sku.goods_spu.spu_name }}{{ good.goods_sku.sku_name }}</h3>
+                    <div class="am-gallery-desc">￥{{ good.goods_sku.price }}</div>
+                </a>
+            </div>
+          </li>
+      {% endfor %}
+
+    {% endfor %}
+
+{#      <li>#}
+{#        <div class="am-gallery-item">#}
+{#            <a href="detail.html" class="">#}
+{#              <img src=" {% static 'images/test.png' %}" />#}
+{#                <h3 class="am-gallery-title">猪骨头棒新鲜生鲜肉制品猪大骨头筒骨熬汤佳品500g</h3>#}
+{#                <div class="am-gallery-desc">￥52</div>#}
+{#            </a>#}
+{#        </div>#}
+{#      </li>#}
+{#      <li>#}
+{#        <div class="am-gallery-item">#}
+{#            <a href="detail.html" class="">#}
+{#              <img src=" {% static 'images/test1.png' %}" />#}
+{#                <h3 class="am-gallery-title">冻品批发大江鸡腿 冷鲜鸡腿放心食材1kg 冷冻食材</h3>#}
+{#                <div class="am-gallery-desc">￥39</div>#}
+{#            </a>#}
+{#        </div>#}
+{#      </li>#}
+{#        <li>#}
+{#        <div class="am-gallery-item">#}
+{#            <a href="detail.html" class="">#}
+{#              <img src=" {% static 'images/test2.png' %}" />#}
+{#                <h3 class="am-gallery-title">法国加力果12个装 进口新鲜水果 嘎啦苹果 包邮</h3>#}
+{#                <div class="am-gallery-desc">￥45.8</div>#}
+{#            </a>#}
+{#        </div>#}
+{#      </li>#}
+{#      <li>#}
+{#        <div class="am-gallery-item">#}
+{#            <a href="detail.html" class="">#}
+{#              <img src=" {% static 'images/test21.png' %}" />#}
+{#                <h3 class="am-gallery-title">法国加力果12个装 进口新鲜水果 嘎啦苹果 包邮</h3>#}
+{#                <div class="am-gallery-desc">￥45.8</div>#}
+{#            </a>#}
+{#        </div>#}
+{#      </li>#}
+{#       <li>#}
+{#        <div class="am-gallery-item">#}
+{#            <a href="detail.html" class="">#}
+{#              <img src="{% static 'images/test.png' %}" />#}
+{#                <h3 class="am-gallery-title">猪骨头棒新鲜生鲜肉制品猪大骨头筒骨熬汤佳品500g</h3>#}
+{#                <div class="am-gallery-desc">￥52</div>#}
+{#            </a>#}
+{#        </div>#}
+{#      </li>#}
+{#      <li>#}
+{#        <div class="am-gallery-item">#}
+{#            <a href="detail.html" class="">#}
+{#              <img src=" {% static 'images/test1.png' %}" />#}
+{#                <h3 class="am-gallery-title">冻品批发大江鸡腿 冷鲜鸡腿放心食材1kg 冷冻食材</h3>#}
+{#                <div class="am-gallery-desc">￥39</div>#}
+{#            </a>#}
+{#        </div>#}
+{#      </li>#}
+{#        <li>#}
+{#        <div class="am-gallery-item">#}
+{#            <a href="detail.html" class="">#}
+{#              <img src=" {% static 'images/test2.png' %}" />#}
+{#                <h3 class="am-gallery-title">法国加力果12个装 进口新鲜水果 嘎啦苹果 包邮</h3>#}
+{#                <div class="am-gallery-desc">￥45.8</div>#}
+{#            </a>#}
+{#        </div>#}
+{#      </li>#}
+{#      <li>#}
+{#        <div class="am-gallery-item">#}
+{#            <a href="detail.html" class="">#}
+{#              <img src=" {% static 'images/test21.png' %}" />#}
+{#                <h3 class="am-gallery-title">法国加力果12个装 进口新鲜水果 嘎啦苹果 包邮</h3>#}
+{#                <div class="am-gallery-desc">￥45.8</div>#}
+{#            </a>#}
+{#        </div>#}
+{#      </li>#}
   </ul>
 <!--签到-->
 <div class="qd-box">

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from goods.models import Categroy, Unit, GoodsSPU, GoodsSKU, Gallery
+from goods.models import Categroy, Unit, GoodsSPU, GoodsSKU, Gallery, Banner, ActivityZoneGoods, ActivityZone
 
 # Register your models here.
 
@@ -38,4 +38,24 @@ class GoodsSKUAdmin(admin.ModelAdmin):
     # 关联模型展示
     inlines = [
         GoodsSKUAdminInLine
+    ]
+
+
+
+@admin.register(Banner)
+class BannerAdmin(admin.ModelAdmin):
+    pass
+
+
+
+class ActivityZoneGoodsInline(admin.TabularInline):
+    model=ActivityZoneGoods
+    extra = 3
+    fields = ['activity_zone', 'goods_sku']
+
+
+@admin.register(ActivityZone)
+class ActivityZoneAdmin(admin.ModelAdmin):
+    inlines = [
+        ActivityZoneGoodsInline
     ]

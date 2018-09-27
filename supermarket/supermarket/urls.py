@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^ckeditor/', include("ckeditor_uploader.urls")),
     url(r'^goods/',include('goods.urls',namespace='goods')),
     url(r'^$',Index.as_view(),name='index'),
+    url(r'^search/', include('haystack.urls')),
 ]
