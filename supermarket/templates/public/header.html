@@ -17,10 +17,14 @@
 		<script src="{% static 'js/time.js' %}"></script>
 		<script src="{% static 'js/popup.mini.js' %}"></script>
         <script src="{% static 'js/area.js' %}"></script>
+        <script src="{% static 'js/iscroll.js' %}"></script>
         <script>
         	function changeImage(){
               document.getElementById("imgflag").src="images/redherat.png";
            }
+        </script>
+        <script type="text/javascript">
+
         </script>
 
 		<style>
@@ -31,14 +35,18 @@
 
         <style>
 			.shop-list-mid .tit a{color: #909090;
-    font-size: 1.4rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    white-space: normal;
-    text-overflow: ellipsis;}
+            font-size: 1.4rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            white-space: normal;
+            text-overflow: ellipsis;}
 		</style>
+        {% block metajs %}
+
+        {% endblock %}
+
 	</head>
 	<body>
 		{% block content %}

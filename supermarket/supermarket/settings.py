@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'haystack',
     'login',
     'goods',
+    'shopping',
     'ckeditor',  #富文本编辑器
     'ckeditor_uploader',  #富文本编辑器上传部件
 

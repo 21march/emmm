@@ -24,6 +24,7 @@ urlpatterns = [
     # 上传部件自动调用的上传地址
     url(r'^ckeditor/', include("ckeditor_uploader.urls")),
     url(r'^goods/',include('goods.urls',namespace='goods')),
+    url(r'^shopping/',include('shopping.urls',namespace='shopping')),
     url(r'^$',Index.as_view(),name='index'),
     url(r'^search/', include('haystack.urls')),
 ]

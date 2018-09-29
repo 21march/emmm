@@ -193,6 +193,8 @@ def index(request):
     return render(request, 'spuser/index.html')
 
 
+
+#新增收货地址:
 class AddressView(BaseVerifyVeiw):
     def get(self, request):
         return render(request, 'spuser/address.html')
